@@ -15,7 +15,7 @@ const Login = () => {
     const username = data.username;
     const password = data.password;
 
-    api.post('/user', {
+    api.post('/login', {
       username,
       password
     }).then(() => {

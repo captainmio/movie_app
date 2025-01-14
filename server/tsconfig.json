@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2022", // Or a suitable target (es2020 or later)
+    "module": "es2022", // Or "node16" or "nodenext"
+    "moduleResolution": "node", // Or "node16" or "nodenext"
+    "esModuleInterop": true, // Important for compatibility with CommonJS modules
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true, // If you import JSON files
+    "outDir": "./dist" // Output directory
+  }
+}
