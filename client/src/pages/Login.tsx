@@ -3,9 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import api from "../services/api/api";
 
 import { Link } from "react-router";
+import PageHeader from "../components/pageHeader";
 
 type Inputs = {
-  username?: string,
+  email?: string,
   password?: string,
 };
 
@@ -14,11 +15,11 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
 
   const onSubmit = (data: Inputs) => {
-    const username = data.username;
+    const email = data.email;
     const password = data.password;
 
     api.post('/login', {
-      username,
+      email,
       password
     }).then(() => {
       console.log('Success')
@@ -30,13 +31,13 @@ const Login = () => {
     <div className="row min-vh-100 black_bg">
       <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12 h-100">
         <div className="p-5">
-          <h3 className="mb-4 text-default text-light">Login screen</h3>
+          <PageHeader title="Login" className="mb-4"/>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3">
-              <input className="form-control w-100" type="text" placeholder="username" {...register("username", { required: "Username is required"})} />
-              {errors.username && (
+              <input className="form-control w-100" type="text" placeholder="email" {...register("email", { required: "Email is required"})} />
+              {errors.email && (
                 <p className="text-danger fw-bold text-end">
-                  {errors.username.message}
+                  {errors.email.message}
                 </p>
               )}
             </div>
