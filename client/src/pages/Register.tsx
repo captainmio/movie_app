@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import PageHeader from "../components/pageHeader";
 import { Link } from "react-router";
+import { signUp } from "../services/api/authentication";
 
 
-type FormInputs = {
+export type RegisterFormInputs = {
   firstName: string,
   lastName: string,
   email: string,
@@ -13,10 +14,11 @@ type FormInputs = {
 
 const Register = () => {
 
-  const { register, handleSubmit, formState: { errors }, watch } = useForm<FormInputs>();
+  const { register, handleSubmit, formState: { errors }, watch } = useForm<RegisterFormInputs>();
 
-  const onSubmit = (data: FormInputs) => {
+  const onSubmit = (data: RegisterFormInputs) => {
     console.log(data)
+    signUp(data)
   }
 
   return <>
