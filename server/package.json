@@ -2,7 +2,7 @@
   "name": "server",
   "type": "module",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "./src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon"
@@ -10,7 +10,7 @@
   "nodemonConfig": {
     "watch": ["src"], 
     "ext": "ts", 
-    "exec": "npx tsx index.ts"
+    "exec": "npx tsx ./src/index.ts"
   },
   "author": "",
   "license": "ISC",
