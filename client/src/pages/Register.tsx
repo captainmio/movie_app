@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import PageHeader from "../components/pageHeader";
 import { Link } from "react-router";
 import { signUp } from "../services/api/authentication";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 
 export type RegisterFormInputs = {
@@ -13,12 +15,20 @@ export type RegisterFormInputs = {
 };
 
 const Register = () => {
-
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors }, watch } = useForm<RegisterFormInputs>();
 
-  const onSubmit = (data: RegisterFormInputs) => {
-    console.log(data)
-    signUp(data)
+  const onSubmit = async (data: RegisterFormInputs) => {
+    const result = await signUp(data);
+
+    if(result.success) {
+      toast.success(result.message);
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+    } else {
+      toast.error(result.message);
+    }
   }
 
   return <>
@@ -100,6 +110,18 @@ const Register = () => {
       </div>
     </div>
   </div>
+  <ToastContainer
+    position="top-right"
+    autoClose={3000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick={false}
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    theme="light"
+    />
   </>;
 };
 
