@@ -8,8 +8,10 @@
     "dev": "nodemon"
   },
   "nodemonConfig": {
-    "watch": ["src"], 
-    "ext": "ts", 
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
     "exec": "npx tsx ./src/index.ts"
   },
   "author": "",
@@ -18,7 +20,10 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "ts-node": "^10.9.2"
+    "mongodb": "^6.12.0",
+    "mongoose": "^8.9.5",
+    "ts-node": "^10.9.2",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
