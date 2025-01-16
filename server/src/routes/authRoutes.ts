@@ -1,15 +1,7 @@
-import express, { Request, Response } from "express";
-
+import express from "express";
+import { register } from "../controller/authController";
 const router = express.Router();
 
-router.post("/register", (req: Request, res: Response) => {
-
-  res.json({
-    succes: true,
-    message: 'You are not valid for this website.',
-    data: []
-  });
-  return;
-});
+router.post("/register", register);
 
 export default router

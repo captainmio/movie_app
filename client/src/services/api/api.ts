@@ -1,6 +1,12 @@
 // api.js (or apiClient.js)
 import axios from 'axios';
 
+export type ApiResponse = {
+  success: boolean,
+  message?: string,
+  data?: unknown; 
+}
+
 const api = axios.create({
   baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`, 
   timeout: 10000, // Optional timeout

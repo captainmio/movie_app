@@ -1,14 +1,9 @@
 import { RegisterFormInputs } from '../../pages/Register'
-import Api from './api'
+import Api, { ApiResponse } from './api'
 
-type RegisterResponse = {
-  success: boolean,
-  message?: string,
-  data?: unknown; 
-}
 
 export const signUp = async (formData: RegisterFormInputs) => {
-  const response = await Api.post('/register', formData);
+  const response = await Api.post('/auth/register', formData);
 
-  return response.data as RegisterResponse;
+  return response.data as ApiResponse;
 }
