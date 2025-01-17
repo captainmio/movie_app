@@ -1,29 +1,34 @@
 import { useForm } from "react-hook-form";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import api from "../services/api/api";
+import ToastNotification from "../components/toastNotification";
 
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import PageHeader from "../components/pageHeader";
+import { login } from "../services/api/authentication";
+import useNotification from "../hooks/useNotification";
 
-type Inputs = {
+export type loginType = {
   email?: string,
   password?: string,
 };
 
+
 const Login = () => {
+  const navigate = useNavigate();
+  const {showErrorToast, showSuccessToast} = useNotification();
+  const { register, handleSubmit, formState: { errors } } = useForm<loginType>();
 
-  const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
+  const onSubmit = async (data: loginType) => {
+    const result = await login(data);
 
-  const onSubmit = (data: Inputs) => {
-    const email = data.email;
-    const password = data.password;
-
-    api.post('/login', {
-      email,
-      password
-    }).then(() => {
-      console.log('Success')
-    })
+    if(result.success) {
+      showSuccessToast(result.message);
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 2300);
+    } else {
+      showErrorToast(result.message)
+    }
   }
 
   return <>
@@ -62,6 +67,7 @@ const Login = () => {
       </div>
     </div>
   </div>
+  <ToastNotification />
   </>;
 };
 

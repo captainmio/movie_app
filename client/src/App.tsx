@@ -4,16 +4,19 @@ import './assets/css/app.css';
 
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Dashboard from './pages/Dashboard'
+import ProtectedRoutes from './utils/ProtectedRoutes';
 
 function App() {
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/register' element={<Register/>}/>
-        
-        {/* <Route path='/home' element={<Home />}/>  */}
+        <Route element={<ProtectedRoutes />}>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
+          <Route path='/dashboard' element={<Dashboard />}/> 
+        </Route>
       </Routes>
     </BrowserRouter>
   )
