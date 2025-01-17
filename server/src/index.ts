@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import authRoutes from './routes/auth.route';
 import connectMongoDb from './config/db.config';
+import 'dotenv/config'
 
 
 const app = express()
