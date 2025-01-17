@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import bcrypt from 'bcrypt'
 import User from "../models/User.model";
 
 const registerUser = async (req: Request, res: Response) => {
@@ -8,24 +9,24 @@ const registerUser = async (req: Request, res: Response) => {
   // check if email already exist
   const emailExist = await User.find({email});
 
-  
-  console.log(emailExist)
   if(emailExist.length) {
     res.status(400).json({ success: false, message: "User already exists" });
     return;
   }
 
+  const hashPassword = await bcrypt.hash(password, 12)
+
   const user = await User.create({
     firstName,
     lastName,
     email,
-    password,
+    password: hashPassword,
   });
 
 
   if (user) {
     res.json({
-      succes: true,
+      success: true,
       message: 'API successfully executed v1',
       data: []
     });
