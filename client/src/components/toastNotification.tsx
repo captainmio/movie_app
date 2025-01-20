@@ -1,6 +1,6 @@
 import { ToastContainer } from "react-toastify";
 
-const toastNotification = () => {
+const toastNotification = (): JSX.Element => {
   return <ToastContainer
     position="top-right"
     autoClose={3000}

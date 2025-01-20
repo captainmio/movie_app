@@ -3,7 +3,7 @@ type propsType = {
   className?: string;
 };
 
-const pageHeader = (props: propsType) => {
+const pageHeader = (props: propsType): JSX.Element => {
   const { title, className: additionalClass } = props; // Rename to avoid confusion
 
   return (

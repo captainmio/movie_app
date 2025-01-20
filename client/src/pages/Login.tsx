@@ -23,6 +23,7 @@ const Login = () => {
 
     if(result.success) {
       showSuccessToast(result.message);
+      localStorage.setItem('token', result.data);
       setTimeout(() => {
         navigate("/dashboard");
       }, 2300);

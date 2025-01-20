@@ -17,7 +17,7 @@ export type RegisterFormInputs = {
 
 const Register = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors }, watch } = useForm<RegisterFormInputs>();
+  const { register, handleSubmit, formState: { errors }, watch, reset } = useForm<RegisterFormInputs>();
 
   const { showSuccessToast, showErrorToast } = useToastNotification();
 
@@ -25,6 +25,7 @@ const Register = () => {
     const result = await signUp(data);
 
     if(result.success) {
+      reset();
       showSuccessToast(result.message);
       setTimeout(() => {
         navigate("/login");
