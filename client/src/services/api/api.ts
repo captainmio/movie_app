@@ -1,5 +1,5 @@
 // api.js (or apiClient.js)
-import axios from 'axios';
+import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
 export type ApiResponse = {
   success: boolean,
@@ -18,30 +18,23 @@ const api = axios.create({
 
 
 api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+  async (config: InternalAxiosRequestConfig): Promise<InternalAxiosRequestConfig> => {
+
+    if (config.url && config.url.startsWith('/admin')) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        config.headers = config.headers || {};
+        config.headers.Authorization = `Bearer ${token}`;
+      } else {
+          return Promise.reject({response: {status: 401, data: {message: "Unauthorized"}}});
+      }
     }
-    return config;
+    return config; 
   },
-  (error) => {
+  (error: AxiosError): Promise<AxiosError> => {
     return Promise.reject(error);
   }
 );
-
-// api.interceptors.response.use(
-//   (response) => {
-//     return response;
-//   },
-//   (error) => {
-//     if (error.response.status === 401) {
-//         localStorage.removeItem('token');
-//         window.location.href = '/login';
-//     }
-//     return Promise.reject(error);
-//   }
-// );
 
 
 export default api;

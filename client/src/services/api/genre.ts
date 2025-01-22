@@ -3,7 +3,7 @@ import Api, { ApiResponse } from './api'
 
 export const getGenres = async () => {
   try {
-    const response = await Api.get('/genres');
+    const response = await Api.get('/admin/genres');
     return response.data as ApiResponse;
   } catch (error) {
     if (Axios.isAxiosError(error)) {

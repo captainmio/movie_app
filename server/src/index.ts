@@ -4,6 +4,7 @@ import authRoutes from './routes/auth.route';
 import genreRoutes from './routes/genre.route';
 import connectMongoDb from './config/db.config';
 import 'dotenv/config'
+import { authenticateToken } from './middlewares/token/authenticateToken.middleware';
 
 
 const app = express()
@@ -15,7 +16,7 @@ connectMongoDb();
 
 // API routes
 app.use('/api/auth', authRoutes);
-app.use('/api/genres', genreRoutes);
+app.use('/api/admin/genres', authenticateToken, genreRoutes);
 
 app.listen(3001, () => {
   console.log("server is running")
