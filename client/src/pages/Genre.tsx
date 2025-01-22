@@ -1,7 +1,15 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
 import PageHeader from '../components/pageHeader'
+import { useEffect } from "react";
+import { getGenres } from "../services/api/genre";
 
 const Genre = () => {
+
+  useEffect(() => {
+    getGenres();
+  }, []);
+  
+
   return <Container>
     <Row>
       <Col xs={8} className="pt-5 mx-auto">

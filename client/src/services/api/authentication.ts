@@ -1,6 +1,6 @@
-import  Axios  from 'axios';
-import { RegisterFormInputs } from '../../pages/Register'
+import Axios from 'axios';
 import Api, { ApiResponse } from './api'
+import { RegisterFormInputs } from '../../pages/Register'
 import { loginType } from '../../pages/Login';
 
 

@@ -45,22 +45,23 @@ const login = async (req: Request, res: Response) => {
 
   console.log()
   if(user) {
-    // bcrypt.compare(password, user.password, (err, result) => {
-    //   if(err) {
-    //     res.status(400).json({ success: false, message: "Invalid Data 111" });
-    //   }
+    bcrypt.compare(password, user.password, (err, result) => {
+      if(err) {
+        res.status(400).json({ success: false, message: "invalid username and password" });
+      }
 
-    //   if (result) {
+      if (result) {
         
-    //   } else {
-    //     res.status(400).json({ success: false, message: "Invalid Data 222" });
-    //   }
+      } else {
+        res.status(400).json({ success: false, message: "Invalid Data" });
+      }
 
-    // });
+    });
 
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
-      return res.status(401).json({ error: 'Authentication failed' });
+      res.status(401).json({ error: 'Authentication failed' });
+      return;
     }
     
     const token = jwt.sign({ userId: user._id }, `${process.env.JWT_SECRET_KEY}`, {
