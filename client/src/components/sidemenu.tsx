@@ -7,9 +7,8 @@ import { MdOutlineLocalMovies } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const Sidemenu = (): JSX.Element => {
-
   return (
-    <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style={{'height': '100vh'}}>
+    <div className="w-100 h-100 flex-shrink-0 p-3 text-white bg-dark min-vw-50" style={{'overflow': 'auto'}}>
       <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <BsAmd />
         <span className="fs-4 ms-4 d-block">Dashboard</span>

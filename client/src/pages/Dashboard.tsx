@@ -11,13 +11,13 @@ import Col from 'react-bootstrap/Col';
 const Dashboard = () => {
   return (<>
     <Container fluid className="p-0">
-      <Row>
-        <Col xs={2}>
-          <aside className="sidebar">
+      <Row className="w-100 d-flex align-items-stretch">
+        <Col xl={3} lg={4} md={4} sm={4} className="col-stretch">
+          <aside className="sidebar h-100">
             <Sidemenu />
           </aside>
         </Col>
-        <Col>
+        <Col xl={9} lg={8} md={8} sm={8} className="col-stretch" style={{'height': '1000px'}}>
         <main className="main-content">
           <Routes>
             <Route path='/tags' element={<Tags />} />
