@@ -21,7 +21,6 @@ const AddGenre = () => {
 
     if(result.success) {
       showSuccessToast(result.message);
-      localStorage.setItem('token', result.data);
       setTimeout(() => {
         navigate("/admin/genre");
       }, 1000);
@@ -34,7 +33,7 @@ const AddGenre = () => {
     <>
     <Container>
     <Row>
-      <Col xs={12} className="pt-5 mx-auto">
+      <Col xs={7} className="pt-5 mx-auto">
       <Card>
         <Card.Header><PageHeader title={"Add Genre"} isDark={true}/></Card.Header>
         <Card.Body>
@@ -71,11 +70,4 @@ const AddGenre = () => {
 };
 
 export default AddGenre;
-function showSuccessToast(message: any) {
-  throw new Error("Function not implemented.");
-}
-
-function showErrorToast(message: any) {
-  throw new Error("Function not implemented.");
-}
 

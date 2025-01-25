@@ -2,8 +2,19 @@ import { Request, Response } from "express";
 import Genre from "../models/Genre.mode";
 
 const getGenres = async (req: Request, res: Response) => {
-  console.log('GET GENRES API')
-  return
+  const genres = await Genre.find();
+
+  if (genres) {
+    res.json({
+      success: true,
+      message: '',
+      data: genres
+    });
+    return;
+  } else {
+    res.status(400).json({ success: false, message: "Error fetching Genres" });
+    return;
+  }
 };
 
 
