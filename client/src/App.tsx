@@ -15,7 +15,7 @@ function App() {
         <Route element={<ProtectedRoutes />}>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path="/dashboard/*" element={<Dashboard />}/> 
+          <Route path="/admin/*" element={<Dashboard />}/> 
           <Route path="*" element={<><h1>404 Not Found</h1></>} />
         </Route>
       </Routes>

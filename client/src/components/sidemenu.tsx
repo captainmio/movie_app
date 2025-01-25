@@ -26,12 +26,12 @@ const Sidebar = () => {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/dashboard/genre" className="nav-link text-white">
+          <Link to="/admin/genre" className="nav-link text-white">
             <MdOutlineCategory /> <span className="ms-2 d-none d-sm-inline-block">Genre</span>
           </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/dashboard/tags" className="nav-link text-white">
+          <Link to="/admin/tags" className="nav-link text-white">
             <FaTags /> <span className="ms-2 d-none d-sm-inline-block">Tags</span>
           </Link>
         </Nav.Item>

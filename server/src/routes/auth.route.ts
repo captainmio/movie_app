@@ -1,4 +1,4 @@
-import { createUser } from './../schemas/user.schema';
+import { zUserSchema } from './../schemas/user.schema';
 import { validateCreateUser } from './../middlewares/validations/validateCreateUser.middleware';
 import express from "express";
 import { login, register } from "../controllers/auth.controller";

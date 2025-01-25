@@ -25,7 +25,7 @@ const Login = () => {
       showSuccessToast(result.message);
       localStorage.setItem('token', result.data);
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/admin");
       }, 2300);
     } else {
       showErrorToast(result.message)

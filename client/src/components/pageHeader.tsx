@@ -1,7 +1,7 @@
 type propsType = {
   title: string;
   className?: string;
-  isDark: boolean;
+  isDark?: boolean;
 };
 
 const pageHeader = (props: propsType): JSX.Element => {

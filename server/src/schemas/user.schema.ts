@@ -1,6 +1,6 @@
 import {z} from 'zod'
 
-export const createUser = z.object({
+export const zUserSchema = z.object({
   firstName: z.string({
     required_error: "first name is required",
     invalid_type_error: "first name must be a string",

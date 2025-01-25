@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { zUserSchema } from "../../schemas/user.schema";
+import { zGenreSchema } from "../../schemas/genre.schema";
 
-export const validateCreateUser = (req: Request, res: Response, next: () => void) => {
-  const validationResult = zUserSchema.safeParse(req.body);
+export const validateCreateGenre = (req: Request, res: Response, next: () => void) => {
+  const validationResult = zGenreSchema.safeParse(req.body);
   if (!validationResult.success) {
     res.status(400).json({ success: false, message: validationResult.error.errors });
     return;
