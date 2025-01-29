@@ -2,14 +2,14 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import PageHeader from '../../components/pageHeader'
 import TableContent from '../../components/tableContent'
 import { useEffect, useMemo, useState } from "react";
-import { deleteGenre, getGenres } from "../../services/api/genre";
+import { deleteGenre, getGenres } from "../../services/api/GenreService";
 import { useNavigate } from "react-router-dom";
 import ToastNotification from "../../components/toastNotification";
 import useToastNotification from "../../hooks/useNotification"
 
 const Genre = () => {
   const { showSuccessToast, showErrorToast } = useToastNotification();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Record<string, never>[]>([]);
   const navigate = useNavigate();
   const columns = useMemo<string[]>(() => [
     'name',

@@ -4,7 +4,7 @@ import ToastNotification from "../components/toastNotification";
 
 import { Link, useNavigate } from "react-router";
 import PageHeader from "../components/pageHeader";
-import { login } from "../services/api/authentication";
+import { login } from "../services/api/AuthenticationService";
 import useNotification from "../hooks/useNotification";
 
 export type loginType = {

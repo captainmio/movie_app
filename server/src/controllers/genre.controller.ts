@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Genre from "../models/Genre.mode";
 
-const getGenres = async (req: Request, res: Response) => {
+export const getGenres = async (req: Request, res: Response) => {
   const genres = await Genre.find();
 
   if (genres) {
@@ -17,7 +17,7 @@ const getGenres = async (req: Request, res: Response) => {
   }
 };
 
-const getGenreById = async (req: Request, res: Response) => {
+export const getGenreById = async (req: Request, res: Response) => {
   const {id} = req.params;
 
   // search if this id exist in the database
@@ -28,7 +28,7 @@ const getGenreById = async (req: Request, res: Response) => {
 }
 
 
-const editGenre = async (req: Request, res: Response) => {
+export const editGenre = async (req: Request, res: Response) => {
 
   const {id} = req.params;
   const {name, description} = req.body;
@@ -50,7 +50,7 @@ const editGenre = async (req: Request, res: Response) => {
   return;
 }
 
-const deleteGenre = async (req: Request, res: Response) => {
+export const deleteGenre = async (req: Request, res: Response) => {
   const {id} = req.params;
   const removeGenre = await Genre.findByIdAndDelete({ _id: id });
 
@@ -67,7 +67,7 @@ const deleteGenre = async (req: Request, res: Response) => {
   return;
 }
 
-const addGenre = async (req: Request, res: Response) => {
+export const addGenre = async (req: Request, res: Response) => {
   const {name, description} = req.body;
 
   const genre = await Genre.create({
@@ -88,11 +88,3 @@ const addGenre = async (req: Request, res: Response) => {
   }
 
 };
-
-export {
-  getGenres as getGenres,
-  getGenreById as getGenreById,
-  addGenre as addGenre,
-  editGenre as editGenre,
-  deleteGenre as deleteGenre
-}

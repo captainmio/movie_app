@@ -1,6 +1,6 @@
 import { Card, Col, Container, Row } from "react-bootstrap";
 import PageHeader from "../../components/pageHeader";
-import { addGenre } from "../../services/api/genre";
+import { addGenre } from "../../services/api/GenreService";
 import { useNavigate } from "react-router-dom";
 import useNotification from "../../hooks/useNotification";
 import GenreForm, { GenreFormInputs } from "./GenreForm";

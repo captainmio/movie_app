@@ -1,6 +1,6 @@
 import Sidemenu from "../components/sidemenu";
 import {Routes, Route, Outlet} from 'react-router-dom';
-import Tags from "./Tags";
+import Tags from "./tag/Tags";
 import Genre from "./genre/Genre";
 
 import Container from 'react-bootstrap/Container';

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import PageHeader from "../components/pageHeader";
 import ToastNotification from "../components/toastNotification";
 import { Link } from "react-router";
-import { signUp } from "../services/api/authentication";
+import { signUp } from "../services/api/AuthenticationService";
 import { useNavigate } from "react-router-dom";
 import useToastNotification from "../hooks/useNotification"
 
