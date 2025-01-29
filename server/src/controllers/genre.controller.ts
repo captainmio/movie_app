@@ -30,8 +30,6 @@ const getGenreById = async (req: Request, res: Response) => {
 
 const editGenre = async (req: Request, res: Response) => {
 
-  console.log('Edit Genre')
-
   const {id} = req.params;
   const {name, description} = req.body;
 
@@ -49,6 +47,24 @@ const editGenre = async (req: Request, res: Response) => {
   const updatedGenre = await genre.save();
 
   res.status(200).json({ success: true, message:'Genre successfully updated' , data: updatedGenre });
+  return;
+}
+
+const deleteGenre = async (req: Request, res: Response) => {
+  const {id} = req.params;
+  const removeGenre = await Genre.findByIdAndDelete({ _id: id });
+
+  if(!removeGenre) {
+    res.status(400).json({ success: false, message: "Genre not found" });
+    return
+  }
+
+  res.status(200).json({
+    success: true,
+    message: 'Genre successfully deleted',
+    data: removeGenre
+  });
+  return;
 }
 
 const addGenre = async (req: Request, res: Response) => {
@@ -77,5 +93,6 @@ export {
   getGenres as getGenres,
   getGenreById as getGenreById,
   addGenre as addGenre,
-  editGenre as editGenre
+  editGenre as editGenre,
+  deleteGenre as deleteGenre
 }

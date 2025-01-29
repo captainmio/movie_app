@@ -53,3 +53,16 @@ export const editGenre = async (id: string, payload: GenreFormInputs) => {
     }
   }
 }
+
+export const deleteGenre = async (id: string) => {
+  try {
+    const response = await Api.delete(`/admin/genres/delete/${id}`);
+    return response.data as ApiResponse;
+  } catch (error) {
+    if (Axios.isAxiosError(error)) {
+      const { response } = error;
+      console.log('Error Response:', response?.data, response?.status);
+      return { ...response?.data };
+    }
+  }
+}

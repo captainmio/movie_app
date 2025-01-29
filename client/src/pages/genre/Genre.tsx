@@ -2,10 +2,13 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import PageHeader from '../../components/pageHeader'
 import TableContent from '../../components/tableContent'
 import { useEffect, useMemo, useState } from "react";
-import { getGenres } from "../../services/api/genre";
+import { deleteGenre, getGenres } from "../../services/api/genre";
 import { useNavigate } from "react-router-dom";
+import ToastNotification from "../../components/toastNotification";
+import useToastNotification from "../../hooks/useNotification"
 
 const Genre = () => {
+  const { showSuccessToast, showErrorToast } = useToastNotification();
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const columns = useMemo<string[]>(() => [
@@ -15,10 +18,10 @@ const Genre = () => {
 
 
   useEffect(() => {
-    getDate();
+    fetchGenres();
   }, []);
 
-  const getDate = async () => {
+  const fetchGenres = async () => {
     const genres = await getGenres();
     if(genres.success) {
       setData(genres.data)
@@ -29,12 +32,20 @@ const Genre = () => {
     navigate(`/admin/genre/edit/${id}`)
   }
 
-  const handleDelete = (id: string | number) => {
-    console.log('delete id:', id)
-  }
-  
+  const handleDelete = async (id: string | number) => {
+    const result = await deleteGenre(id.toString());
 
-  return <Container>
+    if(result.success) {
+      showSuccessToast(result.message);
+      fetchGenres();
+    } else {
+      showErrorToast(result.message)
+    }
+  }
+
+  return (
+    <>
+  <Container>
     <Row>
       <Col xs={8} className="pt-5 mx-auto">
         <Card>
@@ -55,7 +66,11 @@ const Genre = () => {
         </Card>
       </Col>
     </Row>
-  </Container>;
+  </Container>
+  <ToastNotification />
+  </>
+  );
 };
 
 export default Genre;
+
