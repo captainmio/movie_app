@@ -9,7 +9,6 @@ const Genre = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const columns = useMemo<string[]>(() => [
-    'id',
     'name',
     'description',
   ], []);
@@ -25,6 +24,14 @@ const Genre = () => {
       setData(genres.data)
     }
   }
+
+  const handleEdit = (id: string | number) => {
+    console.log('edit id:', id)
+  }
+
+  const handleDelete = (id: string | number) => {
+    console.log('delete id:', id)
+  }
   
 
   return <Container>
@@ -33,11 +40,17 @@ const Genre = () => {
         <Card>
           <Card.Header>
             <div className="d-flex justify-content-between mb-2">
-              <PageHeader title="Genre list" isDark={true} /> <Button variant="primary" type="button" onClick={() => navigate('/admin/genre/add')}>Add</Button>
+              <PageHeader title="Genre list" isDark={true} /> <Button variant="success" type="button" onClick={() => navigate('/admin/genre/add')}>Add</Button>
             </div>
           </Card.Header>
           <Card.Body>
-            <TableContent data={data} header={columns}/>
+            <TableContent 
+              data={data} 
+              header={columns} 
+              showAction={true}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+            />
           </Card.Body>
         </Card>
       </Col>
