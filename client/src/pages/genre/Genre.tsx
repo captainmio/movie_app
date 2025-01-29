@@ -11,10 +11,13 @@ const Genre = () => {
   const { showSuccessToast, showErrorToast } = useToastNotification();
   const [data, setData] = useState<Record<string, unknown>[]>([]);
   const navigate = useNavigate();
-  const columns = useMemo<string[]>(() => [
-    'name',
-    'description',
-  ], []);
+  const columns = useMemo<Record<string, unknown>[]>(() => [{
+    label: 'Desc',
+    key: 'description'
+  }, {
+    label: 'Name',
+    key: 'name'
+  }], []);
 
 
   useEffect(() => {

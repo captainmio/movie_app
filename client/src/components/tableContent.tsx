@@ -7,7 +7,7 @@ import ConfirmModal from './confirmModal';
 
 
 type propsType = {
-  header?: string[];
+  header?: Record<string, unknown>[];
   data?: Record<string, unknown>[];
   showAction?: boolean;
   handleEdit?: (id: string | number) => void; 
@@ -23,7 +23,7 @@ const tableContent = (props: propsType): JSX.Element => {
     {header && <thead>
       <tr>
         {
-          header.map((head, index) => (<th key={index}>{capitalizeFirstLetter(head)}</th>))
+          header.map((head: Record<string, any>, index) => (<th key={index}>{capitalizeFirstLetter(head.label)}</th>))
         }
       </tr>
     </thead>}
@@ -34,7 +34,7 @@ const tableContent = (props: propsType): JSX.Element => {
         return ((
           <tr key={indexR}>
             {header?.map((head: any) => {
-              const selectedItem: string = item[head];
+              const selectedItem: string = item[head.key];
               const thead: string = selectedItem ?? "";
               
               return ((

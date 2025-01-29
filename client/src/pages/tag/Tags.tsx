@@ -7,12 +7,15 @@ import { useNavigate } from "react-router-dom";
 import { getTags } from "../../services/api/TagService";
 
 const Tags = () => {
-  const [data, setData] = useState<Record<string, never>[]>([]);
+  const [data, setData] = useState<Record<string, unknown>[]>([]);
   const navigate = useNavigate();
-  const columns = useMemo<string[]>(() => [
-      'slug',
-      'name',
-    ], []);
+  const columns = useMemo<Record<string, unknown>[]>(() => [{
+    label: 'Slug',
+    key: 'slug'
+  }, {
+    label: 'Tag name',
+    key: 'name'
+  }], []);
 
   const handleEdit = (id: string | number) => {
     navigate(`/admin/tag/edit/${id}`)
