@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import Api, { ApiResponse } from './api'
-import { AddGenreFormInputs } from '../../pages/genre/AddGenre';
+import { GenreFormInputs } from '../../pages/genre/GenreForm';
 
 export const getGenres = async () => {
   try {
@@ -15,7 +15,7 @@ export const getGenres = async () => {
   }
 }
 
-export const addGenre = async (formData: AddGenreFormInputs) => {
+export const addGenre = async (formData: GenreFormInputs) => {
   try {
     const response = await Api.post('/admin/genres/add', formData);
     return response.data as ApiResponse;

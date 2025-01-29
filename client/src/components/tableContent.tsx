@@ -2,7 +2,6 @@ import Table from 'react-bootstrap/Table';
 import { capitalizeFirstLetter } from '../utils/helpers/stringUtils';
 import { Button } from 'react-bootstrap';
 
-
 type propsType = {
   header?: string[];
   data?: never[];
@@ -10,7 +9,6 @@ type propsType = {
   handleEdit?: (id: string | number) => void; 
   handleDelete?: (id: string | number) => void;
 };
-
 
 type DynamicData = Record<string, never>
 
