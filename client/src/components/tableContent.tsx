@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import Table from 'react-bootstrap/Table';
 import { capitalizeFirstLetter } from '../utils/helpers/stringUtils';
 import { Button } from 'react-bootstrap';
@@ -26,21 +28,22 @@ const tableContent = (props: propsType): JSX.Element => {
       </tr>
     </thead>}
     {data && (<tbody>
-      {data.map((item: Record<string, unknown>, indexR: number) => {
-
+      {data.map((item: Record<string, any>, indexR: number) => {
         const id: string = item._id?.toString() ?? ''
 
         return ((
           <tr key={indexR}>
-            {header?.map((head: unknown) => {
-
-              const thead:string = head?.toString() ?? '';
+            {header?.map((head: any) => {
+              const selectedItem: string = item[head].toString();
+              const thead: string = selectedItem.toString() ?? "";
               
               return ((
                 <td key={thead}>
                   {thead}
                 </td>
               ))
+
+              
             })}
   
             {showAction && (

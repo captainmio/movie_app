@@ -1,20 +1,18 @@
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import PageHeader from "../../components/pageHeader";
-import { addGenre } from "../../services/api/GenreService";
+import ToastNotification from "../../components/toastNotification";
+import TagForm, { TagFormInputs } from "./TagForm";
 import { useNavigate } from "react-router-dom";
 import useNotification from "../../hooks/useNotification";
-import GenreForm, { GenreFormInputs } from "./GenreForm";
-import ToastNotification from "../../components/toastNotification";
+import { addTag } from "../../services/api/TagService";
 
-
-const AddGenre = () => {
+const AddTag = () => {
   const navigate = useNavigate();
   const {showErrorToast, showSuccessToast} = useNotification();
-
-
-  const onSubmit = async (data: GenreFormInputs) => {
-    const result = await addGenre(data);
-
+  
+  const onSubmit = async (data: TagFormInputs) => {
+    const result = await addTag(data);
+    
     if(result.success) {
       setTimeout(() => {
         navigate("/admin/genre", { state: { showSuccess: true } });
@@ -31,9 +29,9 @@ const AddGenre = () => {
     <Row>
       <Col sm={7} xs={true} className="pt-5 mx-auto">
       <Card>
-        <Card.Header><PageHeader title={"Add Genre"} isDark={true}/></Card.Header>
+        <Card.Header><PageHeader title={"Add Tag"} isDark={true}/></Card.Header>
         <Card.Body>
-          <GenreForm onSubmit={onSubmit} />
+          <TagForm onSubmit={onSubmit} />
         </Card.Body>
       </Card>
       </Col>
@@ -44,5 +42,4 @@ const AddGenre = () => {
   );
 };
 
-export default AddGenre;
-
+export default AddTag;

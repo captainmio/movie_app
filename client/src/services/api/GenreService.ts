@@ -2,9 +2,11 @@ import Axios from 'axios';
 import Api, { ApiResponse } from './api'
 import { GenreFormInputs } from '../../pages/genre/GenreForm';
 
+const baseUrl: string = 'genres';
+
 export const getGenres = async () => {
   try {
-    const response = await Api.get('/admin/genres');
+    const response = await Api.get(`/admin/${baseUrl}`);
     return response.data as ApiResponse;
   } catch (error) {
     if (Axios.isAxiosError(error)) {
@@ -17,7 +19,7 @@ export const getGenres = async () => {
 
 export const addGenre = async (formData: GenreFormInputs) => {
   try {
-    const response = await Api.post('/admin/genres/add', formData);
+    const response = await Api.post(`/admin/${baseUrl}/add`, formData);
     return response.data as ApiResponse;
   } catch (error) {
     if (Axios.isAxiosError(error)) {
@@ -30,7 +32,7 @@ export const addGenre = async (formData: GenreFormInputs) => {
 
 export const getGenreById = async (id: string) => {
   try {
-    const response = await Api.get(`/admin/genres/${id}`);
+    const response = await Api.get(`/admin/${baseUrl}/${id}`);
     return response.data as ApiResponse;
   } catch (error) {
     if (Axios.isAxiosError(error)) {
@@ -43,7 +45,7 @@ export const getGenreById = async (id: string) => {
 
 export const editGenre = async (id: string, payload: GenreFormInputs) => {
   try {
-    const response = await Api.put(`/admin/genres/edit/${id}`, payload);
+    const response = await Api.put(`/admin/${baseUrl}/edit/${id}`, payload);
     return response.data as ApiResponse;
   } catch (error) {
     if (Axios.isAxiosError(error)) {
@@ -56,7 +58,7 @@ export const editGenre = async (id: string, payload: GenreFormInputs) => {
 
 export const deleteGenre = async (id: string) => {
   try {
-    const response = await Api.delete(`/admin/genres/delete/${id}`);
+    const response = await Api.delete(`/admin/${baseUrl}/delete/${id}`);
     return response.data as ApiResponse;
   } catch (error) {
     if (Axios.isAxiosError(error)) {

@@ -7,12 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { getTags } from "../../services/api/TagService";
 
 const Tags = () => {
-
   const [data, setData] = useState<Record<string, never>[]>([]);
   const navigate = useNavigate();
   const columns = useMemo<string[]>(() => [
+      'slugs',
       'name',
-      'description',
     ], []);
 
   const handleEdit = (id: string | number) => {
@@ -32,7 +31,6 @@ const Tags = () => {
   }
 
   const fetchTags = async () => {
-    console.log(111)
     const genres = await getTags();
     if(genres.success) {
       setData(genres.data)
@@ -43,13 +41,11 @@ const Tags = () => {
     fetchTags()
   }, []);
   
-
-
   return (
     <>
       <Container>
       <Row>
-        <Col xs={8} className="pt-5 mx-auto">
+        <Col sm={8} xs={true} className="pt-5 mx-auto">
           <Card>
             <Card.Header>
               <div className="d-flex justify-content-between mb-2">

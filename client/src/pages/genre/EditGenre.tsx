@@ -47,7 +47,7 @@ const EditGenre = () => {
     <>
     <Container>
     <Row>
-      <Col xs={7} className="pt-5 mx-auto">
+      <Col sm={7} xs={true} className="pt-5 mx-auto">
       <Card>
         <Card.Header><PageHeader title={"Edit Genre"} isDark={true}/></Card.Header>
         <Card.Body>

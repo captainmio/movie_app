@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import AddGenre from "./genre/AddGenre";
 import EditGenre from "./genre/EditGenre";
+import AddTag from "./tag/AddTag";
 
 
 const Dashboard = () => {
@@ -22,7 +23,10 @@ const Dashboard = () => {
         <Col xl={9} lg={8} md={8} sm={8} xs={10} className="col-stretch">
         <main className="main-content">
           <Routes>
-            <Route path='/tags' element={<Tags />} />
+            <Route path='/tag'>
+              <Route index element={<Tags />} />
+              <Route path="add" element={<AddTag />} />
+            </Route>
 
             {/* Genre router */}
             <Route path="/genre">

@@ -9,7 +9,7 @@ import useToastNotification from "../../hooks/useNotification"
 
 const Genre = () => {
   const { showSuccessToast, showErrorToast } = useToastNotification();
-  const [data, setData] = useState<Record<string, never>[]>([]);
+  const [data, setData] = useState<Record<string, unknown>[]>([]);
   const navigate = useNavigate();
   const columns = useMemo<string[]>(() => [
     'name',
@@ -47,7 +47,7 @@ const Genre = () => {
     <>
   <Container>
     <Row>
-      <Col xs={8} className="pt-5 mx-auto">
+      <Col sm={8} xs={true} className="pt-5 mx-auto">
         <Card>
           <Card.Header>
             <div className="d-flex justify-content-between mb-2">

@@ -14,13 +14,13 @@ type PropsType = {
 
 const ConfirmModal = (props: PropsType) => {
   const {btnLabel, title, message, onConfirm, value, btnClass} = props
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState<boolean>(false);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   return (
     <>
-    <Button variant="primary" onClick={handleShow} className={btnClass}>
+    <Button onClick={handleShow} className={btnClass}>
       {btnLabel}
     </Button>
 
@@ -33,7 +33,7 @@ const ConfirmModal = (props: PropsType) => {
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={() => {
+        <Button className={btnClass} onClick={() => {
           handleClose();
           onConfirm(value ?? null);
         }}>

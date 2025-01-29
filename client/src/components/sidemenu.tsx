@@ -31,7 +31,7 @@ const Sidebar = () => {
           </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/admin/tags" className="nav-link text-white">
+          <Link to="/admin/tag" className="nav-link text-white">
             <FaTags /> <span className="ms-2 d-none d-sm-inline-block">Tags</span>
           </Link>
         </Nav.Item>
