@@ -20,12 +20,11 @@ const Login = () => {
 
   const onSubmit = async (data: loginType) => {
     const result = await login(data);
-
     if(result.success) {
       showSuccessToast(result.message);
       localStorage.setItem('token', result.data);
       setTimeout(() => {
-        navigate("/admin");
+        navigate("/admin/dashboard");
       }, 2300);
     } else {
       showErrorToast(result.message)

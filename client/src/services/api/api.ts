@@ -37,4 +37,17 @@ api.interceptors.request.use(
 );
 
 
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && (error.response.data.message === 'Unauthorized')) {
+      // this means the token is either expired or invalid, we want to redirect the user back to login page
+      localStorage.removeItem('token'); // Clear the invalid token
+      window.location.href = '/login'; // Redirect to login page
+    }
+    return Promise.reject(error);
+  }
+);
+
+
 export default api;

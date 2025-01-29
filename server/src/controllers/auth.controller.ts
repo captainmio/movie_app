@@ -28,7 +28,7 @@ const registerUser = async (req: Request, res: Response) => {
   if (user) {
     res.json({
       success: true,
-      message: 'API successfully executed v1',
+      message: 'API successfully executed',
       data: []
     });
     return;
@@ -43,24 +43,10 @@ const login = async (req: Request, res: Response) => {
 
   const user = await User.findOne({email});
 
-  console.log()
   if(user) {
-    bcrypt.compare(password, user.password, (err, result) => {
-      if(err) {
-        res.status(400).json({ success: false, message: "invalid username and password" });
-      }
-
-      if (result) {
-        
-      } else {
-        res.status(400).json({ success: false, message: "Invalid Data" });
-      }
-
-    });
-
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
-      res.status(401).json({ error: 'Authentication failed' });
+      res.status(401).json({ success: false, message: 'Authentication failed' });
       return;
     }
     
