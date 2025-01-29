@@ -21,7 +21,7 @@ const Sidebar = () => {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="#" className="text-white">
+          <Nav.Link href="/admin/dashboard" className="text-white">
             <AiOutlineDashboard /> <span className="ms-2 d-none d-sm-inline-block">Dashboard</span>
           </Nav.Link>
         </Nav.Item>
