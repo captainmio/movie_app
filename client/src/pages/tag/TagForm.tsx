@@ -35,7 +35,13 @@ const TagForm: React.FC<TagFormProps> = ({onSubmit, initialValues}) => {
 
   <Form.Group className="mb-3" controlId="formBasicSlug">
     <Form.Label >Slug</Form.Label>
-    <Form.Control type="slug" {...register("slug", { required: "This field is required"})}/>
+    <Form.Control type="slug" {...register("slug", { 
+      required: "This field is required", 
+      pattern: {
+        value: /^\/[a-z0-9-]+$/,
+        message: "Slug must start with '/' and contain only lowercase letters, numbers, and hyphens."
+      }
+      })}/>
     {errors.slug && (
         <Form.Text className="text-danger">
         {errors.slug.message}

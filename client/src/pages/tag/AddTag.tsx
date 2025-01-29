@@ -15,11 +15,17 @@ const AddTag = () => {
     
     if(result.success) {
       setTimeout(() => {
-        navigate("/admin/genre", { state: { showSuccess: true } });
+        navigate("/admin/tag", { state: { showSuccess: true } });
       }, 2000);
       showSuccessToast(result.message);
     } else {
-      showErrorToast(result.message)
+
+      if(result.message.length <= 2) {
+        result.message.map((msg: Record<string, string>) => showErrorToast(msg.message))
+      } else {
+        showErrorToast(result.message)
+      }
+
     }
   }
 

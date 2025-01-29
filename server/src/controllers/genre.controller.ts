@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Genre from "../models/Genre.mode";
+import Genre from "../models/Genre.model";
 
 export const getGenres = async (req: Request, res: Response) => {
   const genres = await Genre.find();
