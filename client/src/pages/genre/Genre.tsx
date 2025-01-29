@@ -26,7 +26,7 @@ const Genre = () => {
   }
 
   const handleEdit = (id: string | number) => {
-    console.log('edit id:', id)
+    navigate(`/admin/genre/edit/${id}`)
   }
 
   const handleDelete = (id: string | number) => {

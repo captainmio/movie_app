@@ -17,6 +17,39 @@ const getGenres = async (req: Request, res: Response) => {
   }
 };
 
+const getGenreById = async (req: Request, res: Response) => {
+  const {id} = req.params;
+
+  // search if this id exist in the database
+  const genre = await Genre.findOne({ _id: id });
+
+  res.status(200).json({ success: true, data: genre });
+  return;
+}
+
+
+const editGenre = async (req: Request, res: Response) => {
+
+  console.log('Edit Genre')
+
+  const {id} = req.params;
+  const {name, description} = req.body;
+
+
+  // search if this id exist in the database
+  const genre = await Genre.findOne({ _id: id });
+
+  if(!genre) {
+    res.status(400).json({ success: false, message: "Genre not found" });
+    return
+  }
+
+  genre.name = name;
+  genre.description = description;
+  const updatedGenre = await genre.save();
+
+  res.status(200).json({ success: true, message:'Genre successfully updated' , data: updatedGenre });
+}
 
 const addGenre = async (req: Request, res: Response) => {
   const {name, description} = req.body;
@@ -42,5 +75,7 @@ const addGenre = async (req: Request, res: Response) => {
 
 export {
   getGenres as getGenres,
-  addGenre as addGenre
+  getGenreById as getGenreById,
+  addGenre as addGenre,
+  editGenre as editGenre
 }

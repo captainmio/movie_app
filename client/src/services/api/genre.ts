@@ -27,3 +27,29 @@ export const addGenre = async (formData: GenreFormInputs) => {
     }
   }
 }
+
+export const getGenreById = async (id: string) => {
+  try {
+    const response = await Api.get(`/admin/genres/${id}`);
+    return response.data as ApiResponse;
+  } catch (error) {
+    if (Axios.isAxiosError(error)) {
+      const { response } = error;
+      console.log('Error Response:', response?.data, response?.status);
+      return { ...response?.data };
+    }
+  }
+}
+
+export const editGenre = async (id: string, payload: GenreFormInputs) => {
+  try {
+    const response = await Api.put(`/admin/genres/edit/${id}`, payload);
+    return response.data as ApiResponse;
+  } catch (error) {
+    if (Axios.isAxiosError(error)) {
+      const { response } = error;
+      console.log('Error Response:', response?.data, response?.status);
+      return { ...response?.data };
+    }
+  }
+}

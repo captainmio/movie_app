@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
 export type GenreFormInputs = {
+  _id?: string,
   name: string,
   description?: string
 }
@@ -11,9 +13,14 @@ type GenreFormProps = {
   onSubmit: (data: GenreFormInputs) => void;
 }
 
-const GenreForm: React.FC<GenreFormProps> = ({onSubmit}) => {
+const GenreForm: React.FC<GenreFormProps> = ({onSubmit, initialValues}) => {
+
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<GenreFormInputs>();
+
+  useEffect(() => {
+    reset(initialValues);
+  }, [initialValues, reset]);
   
-  const { register, handleSubmit, formState: { errors } } = useForm<GenreFormInputs>();
 
   return (<Form onSubmit={handleSubmit(onSubmit)}>
   <Form.Group className="mb-3" controlId="formBasicName">

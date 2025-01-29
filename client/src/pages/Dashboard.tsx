@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import AddGenre from "./genre/AddGenre";
+import EditGenre from "./genre/EditGenre";
 
 
 const Dashboard = () => {
@@ -22,8 +23,14 @@ const Dashboard = () => {
         <main className="main-content">
           <Routes>
             <Route path='/tags' element={<Tags />} />
-            <Route path='/genre' element={<Genre />} />
-            <Route path='/genre/add' element={<AddGenre />} />
+
+            {/* Genre router */}
+            <Route path="/genre">
+              <Route index element={<Genre />} />
+              <Route path="add" element={<AddGenre />} />
+              <Route path="edit/:id" element={<EditGenre />} />
+            </Route>
+
           </Routes>
           <Outlet />
         </main>
