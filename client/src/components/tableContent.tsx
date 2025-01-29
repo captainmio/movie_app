@@ -34,8 +34,8 @@ const tableContent = (props: propsType): JSX.Element => {
         return ((
           <tr key={indexR}>
             {header?.map((head: any) => {
-              const selectedItem: string = item[head].toString();
-              const thead: string = selectedItem.toString() ?? "";
+              const selectedItem: string = item[head];
+              const thead: string = selectedItem ?? "";
               
               return ((
                 <td key={thead}>

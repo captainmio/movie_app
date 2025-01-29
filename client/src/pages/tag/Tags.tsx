@@ -10,7 +10,7 @@ const Tags = () => {
   const [data, setData] = useState<Record<string, never>[]>([]);
   const navigate = useNavigate();
   const columns = useMemo<string[]>(() => [
-      'slugs',
+      'slug',
       'name',
     ], []);
 

@@ -2,7 +2,20 @@ import { Request, Response } from "express";
 import Tag from "../models/Tag.model";
 
 export const getTags = async (req: Request, res: Response) => {
-  console.log('tagging');
+
+  const tags = await Tag.find();
+
+  if (tags) {
+    res.json({
+      success: true,
+      message: '',
+      data: tags
+    });
+    return;
+  } else {
+    res.status(400).json({ success: false, message: "Error fetching Tags" });
+    return;
+  }
 
   return;
 }
