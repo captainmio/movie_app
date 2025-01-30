@@ -23,22 +23,26 @@ const CustomBreadcrumbs: React.FC = () => {
   }
 
   let currentPath = '';
-  console.log(parentMenu, childMenus)
   
   return (
     <Breadcrumb>
-      <BreadcrumbItem href={`/${parentMenu}`} linkProps={{ to: `/${parentMenu}` }}>
+      <BreadcrumbItem href={`/${parentMenu}`} linkProps={{ to: `/${parentMenu}`, style: {
+          textDecoration: 'none',
+          fontWeight: 'bold',
+          color: 'black'
+        } }}  >
         {parentLabel}
       </BreadcrumbItem>
         {childMenus.map((name, index) => {
           currentPath += `/${name}`; // Build the path dynamically
-          // const isLast = index === parentMenu.length - 1; // Check if it's the last item
-
           return (
             <BreadcrumbItem
               key={index}
-              // active={isLast} // Mark the last item as active
-              linkProps={{ to: currentPath }} // Add link only if not the last
+              linkProps={{ to: currentPath, style: {
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                color: 'black'
+              } }} // Add link only if not the last
             >
               {`${capitalizeFirstLetter(name)} ${parentLabel}`}
             </BreadcrumbItem>
