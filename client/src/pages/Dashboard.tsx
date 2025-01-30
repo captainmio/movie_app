@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col';
 import AddGenre from "./genre/AddGenre";
 import EditGenre from "./genre/EditGenre";
 import AddTag from "./tag/AddTag";
+import EditTag from "./tag/EditTag";
 
 
 const Dashboard = () => {
@@ -26,6 +27,7 @@ const Dashboard = () => {
             <Route path='/tag'>
               <Route index element={<Tags />} />
               <Route path="add" element={<AddTag />} />
+              <Route path="edit/:id" element={<EditTag />} />
             </Route>
 
             {/* Genre router */}

@@ -43,3 +43,30 @@ export const deleteTag = async (id: string) => {
     }
   }
 }
+
+
+export const getTagById = async (id: string) => {
+  try {
+    const response = await Api.get(`/admin/${baseUrl}/${id}`);
+    return response.data as ApiResponse;
+  } catch (error) {
+    if (Axios.isAxiosError(error)) {
+      const { response } = error;
+      console.log('Error Response:', response?.data, response?.status);
+      return { ...response?.data };
+    }
+  }
+}
+
+export const editTag = async (id: string, payload: TagFormInputs) => {
+  try {
+    const response = await Api.put(`/admin/${baseUrl}/edit/${id}`, payload);
+    return response.data as ApiResponse;
+  } catch (error) {
+    if (Axios.isAxiosError(error)) {
+      const { response } = error;
+      console.log('Error Response:', response?.data, response?.status);
+      return { ...response?.data };
+    }
+  }
+}

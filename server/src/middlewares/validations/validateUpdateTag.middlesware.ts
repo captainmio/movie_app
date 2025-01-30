@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
-import { zGenreSchema } from "../../schemas/genre.schema";
+import { zTagSchema } from "../../schemas/tag.schema";
 
-export const validateUpdateGenre = (req: Request, res: Response, next: () => void) => {
+export const validateUpdateTag = (req: Request, res: Response, next: () => void) => {
 
   const {id} = req.params
 
   if(!id) {
-    res.status(400).json({success: false, message: 'genre\'s id does not exist'});
+    res.status(400).json({success: false, message: 'Tag\'s id does not exist'});
   }
 
-  const validationResult = zGenreSchema.safeParse(req.body);
+  const validationResult = zTagSchema.safeParse(req.body);
 
   if (!validationResult.success ) {
     res.status(400).json({ success: false, message: validationResult.error.errors });

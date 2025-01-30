@@ -18,6 +18,16 @@ export const getTags = async (req: Request, res: Response) => {
   }
 }
 
+export const getTagById = async (req: Request, res: Response) => {
+  const {id} = req.params;
+
+  // search if this id exist in the database
+  const tag = await Tag.findOne({ _id: id });
+
+  res.status(200).json({ success: true, data: tag });
+  return;
+}
+
 export const addTag = async (req: Request, res: Response) => {
   const {name, slug} = req.body;
 
