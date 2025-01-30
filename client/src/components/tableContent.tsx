@@ -11,12 +11,17 @@ type propsType = {
   data?: Record<string, unknown>[];
   showAction?: boolean;
   handleEdit?: (id: string | number) => void; 
-  handleDelete?: (id: string | number) => void;
+  deleteBtnConfig: {
+    title: string,
+    message: string,
+    label: string,
+    handleDelete?: (id: string | number) => void
+  }
 };
 
+const tableContent: React.FC<propsType> = ({header, data, showAction, handleEdit, deleteBtnConfig}) => {
 
-const tableContent = (props: propsType): JSX.Element => {
-  const {header, data, showAction, handleEdit, handleDelete} = props;
+  const { title, message, label, handleDelete } = deleteBtnConfig;
 
   return (
   <Table responsive striped>
@@ -54,13 +59,12 @@ const tableContent = (props: propsType): JSX.Element => {
                       <Button type="button" className="btn btn-primary me-2" onClick={() => handleEdit(id)}>Edit</Button>
                     )
                   }
-                  {/* <Button type="button" className="btn btn-danger" onClick={() => handleDelete && handleDelete(item._id)}>Delete</Button> */}
                   {
                     handleDelete && (
                       <ConfirmModal 
-                        title='Genre delete'
-                        message='Are you sure you want to delete this?'
-                        btnLabel='Delete'
+                        title={title}
+                        message={message}
+                        btnLabel={label}
                         btnClass='btn btn-danger'
                         value={id}
                         onConfirm={(id) => {

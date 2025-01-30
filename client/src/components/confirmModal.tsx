@@ -30,14 +30,14 @@ const ConfirmModal = (props: PropsType) => {
       </Modal.Header>
       <Modal.Body>{message}</Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
         <Button className={btnClass} onClick={() => {
           handleClose();
           onConfirm(value ?? null);
         }}>
           {btnLabel}
+        </Button>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
         </Button>
       </Modal.Footer>
     </Modal>

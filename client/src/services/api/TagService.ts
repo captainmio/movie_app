@@ -29,3 +29,17 @@ export const addTag = async (formData: TagFormInputs) => {
     }
   }
 }
+
+
+export const deleteTag = async (id: string) => {
+  try {
+    const response = await Api.delete(`/admin/${baseUrl}/delete/${id}`);
+    return response.data as ApiResponse;
+  } catch (error) {
+    if (Axios.isAxiosError(error)) {
+      const { response } = error;
+      console.log('Error Response:', response?.data, response?.status);
+      return { ...response?.data };
+    }
+  }
+}

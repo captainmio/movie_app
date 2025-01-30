@@ -63,7 +63,12 @@ const Genre = () => {
               header={columns} 
               showAction={true}
               handleEdit={handleEdit}
-              handleDelete={handleDelete}
+              deleteBtnConfig={{
+                title: 'Delete Genre',
+                message: 'Are you sure you want to delete this?',
+                label: 'Delete',
+                handleDelete: handleDelete
+              }}
             />
           </Card.Body>
         </Card>

@@ -4,11 +4,13 @@ import TableContent from "../../components/tableContent";
 import ToastNotification from "../../components/toastNotification";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getTags } from "../../services/api/TagService";
+import { deleteTag, getTags } from "../../services/api/TagService";
+import useNotification from "../../hooks/useNotification";
 
 const Tags = () => {
-  const [data, setData] = useState<Record<string, unknown>[]>([]);
   const navigate = useNavigate();
+  const { showSuccessToast, showErrorToast } = useNotification();
+  const [data, setData] = useState<Record<string, unknown>[]>([]);
   const columns = useMemo<Record<string, unknown>[]>(() => [{
     label: 'Slug',
     key: 'slug'
@@ -22,15 +24,14 @@ const Tags = () => {
   }
 
   const handleDelete = async (id: string | number) => {
-    console.log(id)
-    // const result = await deleteGenre(id.toString());
+    const result = await deleteTag(id.toString());
 
-    // if(result.success) {
-    //   showSuccessToast(result.message);
-    //   fetchGenres();
-    // } else {
-    //   showErrorToast(result.message)
-    // }
+    if(result.success) {
+      showSuccessToast(result.message);
+      fetchTags();
+    } else {
+      showErrorToast(result.message)
+    }
   }
 
   const fetchTags = async () => {
@@ -61,7 +62,12 @@ const Tags = () => {
                 header={columns} 
                 showAction={true}
                 handleEdit={handleEdit}
-                handleDelete={handleDelete}
+                deleteBtnConfig={{
+                  title: 'Delete Tag',
+                  message: 'Are you sure you want to delete this?',
+                  label: 'Delete',
+                  handleDelete: handleDelete
+                }}
               />
             </Card.Body>
           </Card>
