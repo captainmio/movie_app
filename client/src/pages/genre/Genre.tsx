@@ -12,11 +12,12 @@ const Genre = () => {
   const [data, setData] = useState<Record<string, unknown>[]>([]);
   const navigate = useNavigate();
   const columns = useMemo<Record<string, unknown>[]>(() => [{
-    label: 'Desc',
-    key: 'description'
-  }, {
     label: 'Name',
     key: 'name'
+  },
+  {
+    label: 'Desc',
+    key: 'description'
   }], []);
 
 
