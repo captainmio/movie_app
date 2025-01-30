@@ -5,7 +5,7 @@ import { FaHome, FaTags } from "react-icons/fa";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { MdOutlineCategory, MdOutlineLocalMovies } from "react-icons/md";
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
   return (
     <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 bg-dark w-100 h-100">
       <Container fluid className="d-none d-sm-inline-block">

@@ -12,8 +12,7 @@ type PropsType = {
 };
 
 
-const ConfirmModal = (props: PropsType) => {
-  const {btnLabel, title, message, onConfirm, value, btnClass} = props
+const ConfirmModal: React.FC<PropsType> = ({btnLabel, title, message, onConfirm, value, btnClass}) => {
   const [show, setShow] = useState<boolean>(false);
 
   const handleShow = () => setShow(true);

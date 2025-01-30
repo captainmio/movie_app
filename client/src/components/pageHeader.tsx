@@ -1,11 +1,10 @@
-type propsType = {
+type PropsType = {
   title: string;
   className?: string;
   isDark?: boolean;
 };
 
-const pageHeader = (props: propsType): JSX.Element => {
-  const { title, className: additionalClass, isDark = false } = props; // Rename to avoid confusion
+const PageHeader: React.FC<PropsType> = ({ title, className: additionalClass, isDark = false }) => {
 
   return (
     <h1 className={`${isDark ? '' : 'text-light'} ${additionalClass || ''}`}>
@@ -14,4 +13,4 @@ const pageHeader = (props: propsType): JSX.Element => {
   );
 };
 
-export default pageHeader;
+export default PageHeader;

@@ -5,6 +5,7 @@ import TagForm, { TagFormInputs } from "./TagForm";
 import { useNavigate } from "react-router-dom";
 import useNotification from "../../hooks/useNotification";
 import { addTag } from "../../services/api/TagService";
+import CustomBreadcrumbs from "../../components/customBreadcrumbs";
 
 const AddTag = () => {
   const navigate = useNavigate();
@@ -31,18 +32,25 @@ const AddTag = () => {
 
   return (
     <>
-    <Container>
-    <Row>
-      <Col sm={7} xs={true} className="pt-5 mx-auto">
-      <Card>
-        <Card.Header><PageHeader title={"Add Tag"} isDark={true}/></Card.Header>
-        <Card.Body>
-          <TagForm onSubmit={onSubmit} />
-        </Card.Body>
-      </Card>
-      </Col>
-      </Row>
+    <Container fluid>
+      <Row>
+          <Col className="mt-4">
+            <CustomBreadcrumbs />
+          </Col>
+        </Row>
     </Container>
+    <Container>
+      <Row>
+        <Col sm={7} xs={true} className="pt-5 mx-auto">
+        <Card>
+          <Card.Header><PageHeader title={"Add Tag"} isDark={true}/></Card.Header>
+          <Card.Body>
+            <TagForm onSubmit={onSubmit} />
+          </Card.Body>
+        </Card>
+        </Col>
+        </Row>
+      </Container>
     <ToastNotification />
     </>
   );

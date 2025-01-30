@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 import ConfirmModal from './confirmModal';
 
 
-type propsType = {
+type PropsType = {
   header?: Record<string, unknown>[],
   data?: Record<string, unknown>[],
   showAction?: boolean,
@@ -21,7 +21,7 @@ type propsType = {
   }
 };
 
-const tableContent: React.FC<propsType> = ({header, data, showAction, editBtnConfig, deleteBtnConfig}) => {
+const TableContent: React.FC<PropsType> = ({header, data, showAction, editBtnConfig, deleteBtnConfig}) => {
 
   const { title, message, label, handleDelete } = deleteBtnConfig;
   const {handleEdit} = editBtnConfig;
@@ -87,4 +87,4 @@ const tableContent: React.FC<propsType> = ({header, data, showAction, editBtnCon
   </Table>);
 };
 
-export default tableContent;
+export default TableContent;

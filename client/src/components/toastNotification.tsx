@@ -1,6 +1,6 @@
 import { ToastContainer } from "react-toastify";
 
-const toastNotification = (): JSX.Element => {
+const ToastNotification: React.FC = () => {
   return <ToastContainer
     position="top-right"
     autoClose={3000}
@@ -15,4 +15,4 @@ const toastNotification = (): JSX.Element => {
   />;
 };
 
-export default toastNotification;
+export default ToastNotification;

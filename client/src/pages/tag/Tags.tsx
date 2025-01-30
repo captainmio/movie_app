@@ -1,6 +1,7 @@
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import PageHeader from "../../components/pageHeader";
 import TableContent from "../../components/tableContent";
+import CustomBreadcrumbs from "../../components/customBreadcrumbs";
 import ToastNotification from "../../components/toastNotification";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -47,36 +48,43 @@ const Tags = () => {
   
   return (
     <>
+      <Container fluid>
+        <Row>
+            <Col className="mt-4">
+              <CustomBreadcrumbs />
+            </Col>
+          </Row>
+      </Container>
       <Container>
-      <Row>
-        <Col sm={8} xs={true} className="pt-5 mx-auto">
-          <Card>
-            <Card.Header>
-              <div className="d-flex justify-content-between mb-2">
-                <PageHeader title="Tags list" isDark={true} /> <Button variant="success" type="button" onClick={() => navigate('/admin/tag/add')}>Add</Button>
-              </div>
-            </Card.Header>
-            <Card.Body>
-              <TableContent 
-                data={data} 
-                header={columns} 
-                showAction={true}
-                editBtnConfig={{
-                  handleEdit: handleEdit
-                }}
-                deleteBtnConfig={{
-                  title: 'Delete Tag',
-                  message: 'Are you sure you want to delete this?',
-                  label: 'Delete',
-                  handleDelete: handleDelete
-                }}
-              />
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
-    <ToastNotification />
+        <Row>
+          <Col sm={8} xs={true} className="pt-5 mx-auto">
+            <Card>
+              <Card.Header>
+                <div className="d-flex justify-content-between mb-2">
+                  <PageHeader title="Tags list" isDark={true} /> <Button variant="success" type="button" onClick={() => navigate('/admin/tag/add')}>Add</Button>
+                </div>
+              </Card.Header>
+              <Card.Body>
+                <TableContent 
+                  data={data} 
+                  header={columns} 
+                  showAction={true}
+                  editBtnConfig={{
+                    handleEdit: handleEdit
+                  }}
+                  deleteBtnConfig={{
+                    title: 'Delete Tag',
+                    message: 'Are you sure you want to delete this?',
+                    label: 'Delete',
+                    handleDelete: handleDelete
+                  }}
+                />
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+      <ToastNotification />
     </>
   );
 };
