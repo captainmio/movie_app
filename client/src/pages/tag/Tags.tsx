@@ -61,7 +61,9 @@ const Tags = () => {
                 data={data} 
                 header={columns} 
                 showAction={true}
-                handleEdit={handleEdit}
+                editBtnConfig={{
+                  handleEdit: handleEdit
+                }}
                 deleteBtnConfig={{
                   title: 'Delete Tag',
                   message: 'Are you sure you want to delete this?',

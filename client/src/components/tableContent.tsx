@@ -7,10 +7,12 @@ import ConfirmModal from './confirmModal';
 
 
 type propsType = {
-  header?: Record<string, unknown>[];
-  data?: Record<string, unknown>[];
-  showAction?: boolean;
-  handleEdit?: (id: string | number) => void; 
+  header?: Record<string, unknown>[],
+  data?: Record<string, unknown>[],
+  showAction?: boolean,
+  editBtnConfig: {
+    handleEdit?: (id: string | number) => void,
+  },
   deleteBtnConfig: {
     title: string,
     message: string,
@@ -19,9 +21,10 @@ type propsType = {
   }
 };
 
-const tableContent: React.FC<propsType> = ({header, data, showAction, handleEdit, deleteBtnConfig}) => {
+const tableContent: React.FC<propsType> = ({header, data, showAction, editBtnConfig, deleteBtnConfig}) => {
 
   const { title, message, label, handleDelete } = deleteBtnConfig;
+  const {handleEdit} = editBtnConfig;
 
   return (
   <Table responsive striped>

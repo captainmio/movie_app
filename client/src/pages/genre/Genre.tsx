@@ -62,7 +62,9 @@ const Genre = () => {
               data={data} 
               header={columns} 
               showAction={true}
-              handleEdit={handleEdit}
+              editBtnConfig={{
+                handleEdit: handleEdit
+              }}
               deleteBtnConfig={{
                 title: 'Delete Genre',
                 message: 'Are you sure you want to delete this?',
