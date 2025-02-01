@@ -6,6 +6,7 @@ import useNotification from "../../hooks/useNotification";
 import TagForm, { TagFormInputs } from "./TagForm";
 import { useEffect, useState } from "react";
 import ToastNotification from "../../components/toastNotification";
+import CustomBreadcrumbs from "../../components/customBreadcrumbs";
 
 
 const EditTag = () => {
@@ -45,6 +46,13 @@ const EditTag = () => {
 
   return (
     <>
+    <Container fluid>
+      <Row>
+          <Col className="mt-4">
+            <CustomBreadcrumbs />
+          </Col>
+        </Row>
+    </Container>
     <Container>
     <Row>
       <Col sm={7} xs={true} className="pt-5 mx-auto">

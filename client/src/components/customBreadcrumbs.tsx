@@ -15,11 +15,9 @@ const CustomBreadcrumbs: React.FC = () => {
     parentMenu = `${parts[0]}/${parts[1]}`;
     parentLabel = capitalizeFirstLetter(parts[1])
   }
-  if (parts.length > 1) {
-    // Iterate from the second element (index 1) to get child menus
-    for (let i = 2; i < parts.length; i++) {
-      childMenus.push(parts[i]);
-    }
+
+  if (parts.length > 2) {
+    childMenus.push(parts[2])
   }
 
   let currentPath = '';
@@ -44,7 +42,7 @@ const CustomBreadcrumbs: React.FC = () => {
                 color: 'black'
               } }} // Add link only if not the last
             >
-              {`${capitalizeFirstLetter(name)} ${parentLabel}`}
+              {`${capitalizeFirstLetter(name)}`}
             </BreadcrumbItem>
           );
         })}
