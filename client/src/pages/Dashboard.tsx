@@ -10,6 +10,7 @@ import AddGenre from "./genre/AddGenre";
 import EditGenre from "./genre/EditGenre";
 import AddTag from "./tag/AddTag";
 import EditTag from "./tag/EditTag";
+import Movie from "./movie/Movie";
 
 
 const Dashboard = () => {
@@ -24,6 +25,7 @@ const Dashboard = () => {
         <Col xl={10} lg={9} md={9} sm={9} xs={10} className="col-stretch">
         <main className="main-content">
           <Routes>
+            {/* Tag router */}
             <Route path='/tag'>
               <Route index element={<Tags />} />
               <Route path="add" element={<AddTag />} />
@@ -35,6 +37,11 @@ const Dashboard = () => {
               <Route index element={<Genre />} />
               <Route path="add" element={<AddGenre />} />
               <Route path="edit/:id" element={<EditGenre />} />
+            </Route>
+
+            {/* Movie router */}
+            <Route path='/movie'>
+              <Route index element={<Movie />} />
             </Route>
 
           </Routes>

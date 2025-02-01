@@ -10,7 +10,7 @@ const Sidebar: React.FC = () => {
     <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 bg-dark w-100 h-100">
       <Container fluid className="d-none d-sm-inline-block">
         <Navbar.Brand href="/" className="text-white text-decoration-none w-100 d-flex justify-content-center mt-3">
-          <strong className="fs-5 text-center">MOVIE APP</strong>
+          <strong className="fs-5 text-center">MovieHub</strong>
         </Navbar.Brand>
       </Container>
       <hr />
@@ -36,7 +36,7 @@ const Sidebar: React.FC = () => {
           </Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="#" className="text-white">
+          <Nav.Link href="/admin/movie" className="text-white">
             <MdOutlineLocalMovies /> <span className="ms-2 d-none d-sm-inline-block">Movie</span>
           </Nav.Link>
         </Nav.Item>

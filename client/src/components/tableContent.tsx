@@ -18,16 +18,17 @@ type PropsType = {
     message: string,
     label: string,
     handleDelete?: (id: string | number) => void
-  }
+  },
+  [key: string]: any
 };
 
-const TableContent: React.FC<PropsType> = ({header, data, showAction, editBtnConfig, deleteBtnConfig}) => {
+const TableContent: React.FC<PropsType> = ({header, data, showAction, editBtnConfig, deleteBtnConfig, ...rest}) => {
 
   const { title, message, label, handleDelete } = deleteBtnConfig;
   const {handleEdit} = editBtnConfig;
 
   return (
-  <Table responsive striped>
+  <Table responsive striped {...rest}>
     {header && <thead>
       <tr>
         {

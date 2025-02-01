@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ToastNotification from "../components/toastNotification";
-
+import website_splash from "../assets/website_splash.jpg"
 import { Link, useNavigate } from "react-router";
 import PageHeader from "../components/pageHeader";
 import { login } from "../services/api/AuthenticationService";
 import useNotification from "../hooks/useNotification";
+import { Card } from "react-bootstrap";
 
 export type loginType = {
   email?: string,
@@ -34,7 +35,7 @@ const Login = () => {
   return <>
   <div className="container-fluid">
     <div className="row min-vh-100 black_bg">
-      <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12 h-100">
+      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 h-100">
         <div className="p-5">
           <PageHeader title="Login" className="mb-4"/>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -62,9 +63,17 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <div className="col-lg-8 col-md-8 col-sm-6 col-xs-12 login_splash">
-
-      </div>
+      <div className="col-lg-9 col-md-8 col-sm-6 col-xs-12 login_splash d-flex justify-content-center align-items-center">
+        <Card className="login_card">
+          <Card.Body className="text-center">
+            <img
+              src={website_splash}
+              alt="Website Splash"
+              className="img-fluid"
+            />
+          </Card.Body>
+        </Card>
+    </div>
     </div>
   </div>
   <ToastNotification />

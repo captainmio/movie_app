@@ -1,6 +1,12 @@
 .login_splash {
-  background-image: url('../login_splash.jpg');
-  background-position: center;
+  background-color: #F8F8FF;
+  padding: 0px 150px 0px 150px;
+}
+
+.login_card {
+  max-height: 100%;
+  max-width: 80%;
+
 }
 
 .black_bg {
