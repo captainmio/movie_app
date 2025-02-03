@@ -11,6 +11,7 @@ import EditGenre from "./genre/EditGenre";
 import AddTag from "./tag/AddTag";
 import EditTag from "./tag/EditTag";
 import Movie from "./movie/Movie";
+import AddMovie from "./movie/AddMovie";
 
 
 const Dashboard = () => {
@@ -42,6 +43,7 @@ const Dashboard = () => {
             {/* Movie router */}
             <Route path='/movie'>
               <Route index element={<Movie />} />
+              <Route path="add" element={<AddMovie />} />
             </Route>
 
           </Routes>

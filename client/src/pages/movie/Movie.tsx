@@ -5,8 +5,10 @@ import { FaPlus } from "react-icons/fa";
 import CustomBreadcrumbs from "../../components/customBreadcrumbs";
 import TableContent from "../../components/tableContent";
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Movie = () => {
+  const navigate = useNavigate();
    const [data, setData] = useState<Record<string, unknown>[]>([]);
    const columns = useMemo<Record<string, unknown>[]>(() => [{
       label: '#',
@@ -39,7 +41,7 @@ const Movie = () => {
       <Container>
         <Row className="pt-5">
           <Col xl={6} >
-            <Button variant="success">
+            <Button variant="success" onClick={() => navigate('/admin/movie/add')}>
               <FaPlus /> Add Movie
             </Button>
           </Col>
